@@ -84,22 +84,26 @@ def print_function_content(line):
     print_indent_content(line)
 
 
-if __name__ == '__main__':
+def main():
     while True:
-        str_line = sys.stdin.readline()
-        if len(str_line) == 0:
+        line = sys.stdin.readline()
+        if len(line) == 0:
             break
-        str_line = str_line.strip('\n')
-        str_line = str_line.strip('\r')
-        if len(str_line) == 0:
+        line = line.strip('\n')
+        line = line.strip('\r')
+        if len(line) == 0:
             # print empty line
             print()
             continue
 
-        if not str_line[0] == ' ':
-            if is_number(str_line[0]):
-                print_function_header(str_line)
+        if not line[0] == ' ':
+            if is_number(line[0]):
+                print_function_header(line)
             else:
-                print_normal(str_line)
+                print_normal(line)
         else:
-            print_function_content(str_line)
+            print_function_content(line)
+
+
+if __name__ == '__main__':
+    main()
