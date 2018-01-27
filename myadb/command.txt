@@ -1,0 +1,5 @@
+# {device}, {output_device}
+connect {device}
+root
+connect {device}
+shell dmesg > {output_device}/dmesg.txt
