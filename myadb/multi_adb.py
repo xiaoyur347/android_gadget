@@ -252,6 +252,8 @@ class Adb:
                     sys.exit(1)
 
     def connect_devices(self):
+        if not os.path.exists("device.txt"):
+            return
         with open("device.txt", "r") as f:
             for line in f:
                 if line.startswith("#"):
