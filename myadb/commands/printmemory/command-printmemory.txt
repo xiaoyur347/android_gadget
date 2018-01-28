@@ -1,0 +1,3 @@
+#run in myadb path
+push commands/printmemory/printmemory.sh /sdcard/
+shell sh /sdcard/printmemory.sh > {output_device}/ps.txt
