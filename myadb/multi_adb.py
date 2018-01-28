@@ -146,7 +146,7 @@ class Device:
                 self.__connected = False
 
     def __run_normal(self, command):
-        subprocess.run(adb_path + " -s " + self.__name + " " + command, shell=True)
+        subprocess.run("\"" + adb_path + "\"" + " -s " + self.__name + " " + command, shell=True)
 
 
 class Devices:
