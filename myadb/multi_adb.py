@@ -233,6 +233,17 @@ class Adb:
                         'device': Adb.get_key_value(d[4], "device"),
                         'transport_id': Adb.get_key_value(d[5], "transport_id")
                     })
+                elif len(d) == 5:
+                    # serial "device" product model device
+                    self.__devices.append({
+                        'serial': d[0],
+                        'serial_short': Adb.get_serial_short(d[0]),
+                        'usb': "",
+                        'product': Adb.get_key_value(d[2], "product"),
+                        'model': Adb.get_key_value(d[3], "model"),
+                        'device': Adb.get_key_value(d[4], "device"),
+                        'transport_id': ""
+                    })
                 else:
                     if d[1] == "offline":
                         # only : serial "offline" transport_id
