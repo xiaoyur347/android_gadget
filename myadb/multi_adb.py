@@ -47,8 +47,9 @@ def disconnect(device):
 
 
 class Device:
-    def __init__(self, name, usb):
+    def __init__(self, name, name_short, usb):
         self.__name = name
+        self.__name_short = name_short
         self.__loop = None
         self.__thread = None
         self.__running = False
@@ -100,7 +101,8 @@ class Device:
         if command.find("{device}") >= 0:
             command = command.format(device=self.__name)
         if command.find("{output_device}") >= 0:
-            command = command.format(output_device="output/"+self.__name)
+            # use name_short here to avoid invalid ip:port path
+            command = command.format(output_device="output/"+self.__name_short)
             mkdir("output/"+self.__name)
         print(self.__get_name() + " execute: " + command)
         cmd = command.split(" ")
@@ -158,7 +160,9 @@ class Devices:
 
     def append(self, device):
         if not self.has_device(device['serial']):
-            device['object'] = Device(device['serial'], device['usb'])
+            device['object'] = Device(device['serial'],
+                                      device['serial_short'],
+                                      device['usb'])
             self.__devices.append(device)
 
     def has_device(self, device_name):
