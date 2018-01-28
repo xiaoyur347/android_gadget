@@ -274,8 +274,8 @@ class Adb:
         self.read_devices()
         print(self.__devices)
 
-    def run(self):
-        with open("command.txt", "r") as f:
+    def run(self, filename):
+        with open(filename, "r") as f:
             for line in f:
                 if line.startswith("#"):
                     # support minimum comment
@@ -292,4 +292,7 @@ class Adb:
 if __name__ == '__main__':
     adb = Adb()
     adb.connect_devices()
-    adb.run()
+    if len(sys.argv) == 1:
+        adb.run("command.txt")
+    else:
+        adb.run(sys.argv[1])
