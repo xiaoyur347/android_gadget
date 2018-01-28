@@ -103,7 +103,7 @@ class Device:
         if command.find("{output_device}") >= 0:
             # use name_short here to avoid invalid ip:port path
             command = command.format(output_device="output/"+self.__name_short)
-            mkdir("output/"+self.__name)
+            mkdir("output/"+self.__name_short)
         print(self.__get_name() + " execute: " + command)
         cmd = command.split(" ")
         if cmd[0] == "connect":
