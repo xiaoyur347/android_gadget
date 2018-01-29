@@ -1,0 +1,2 @@
+#run in myadb path
+logcat -v threadtime > {output_device}/logcat.txt
