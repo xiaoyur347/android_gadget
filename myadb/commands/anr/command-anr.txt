@@ -1,0 +1,2 @@
+#run in myadb path
+pull /data/anr/traces.txt {output_device}/traces.txt
