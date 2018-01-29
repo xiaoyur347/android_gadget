@@ -152,7 +152,10 @@ class Device:
                 self.__connected = False
 
     def __run_normal(self, command):
-        subprocess.run("\"" + adb_path + "\"" + " -s " + self.__name + " " + command, shell=True)
+        if sys.version_info >= (3, 5):
+            subprocess.run("\"" + adb_path + "\"" + " -s " + self.__name + " " + command, shell=True)
+        else:
+            os.system("\"" + adb_path + "\"" + " -s " + self.__name + " " + command)
 
 
 class Devices:
