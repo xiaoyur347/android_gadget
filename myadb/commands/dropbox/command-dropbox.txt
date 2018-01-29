@@ -1,0 +1,5 @@
+#run in myadb path
+root
+sleep 2
+connect
+pull /data/system/dropbox/ {output_device}/
