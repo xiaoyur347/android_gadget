@@ -1,0 +1,2 @@
+#run in myadb path
+shell dmesg > {output_device}/dmesg.txt
