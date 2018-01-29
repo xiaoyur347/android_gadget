@@ -1,4 +1,5 @@
 #run in myadb path
 root
+sleep 2
 connect
 pull /data/tombstones/ {output_device}/

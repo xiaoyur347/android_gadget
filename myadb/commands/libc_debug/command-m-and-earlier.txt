@@ -1,0 +1,8 @@
+#run in myadb path
+root
+sleep 2
+connect
+shell stop
+shell setprop libc.debug.malloc.program app_process
+shell setprop libc.debug.malloc 1
+shell start
