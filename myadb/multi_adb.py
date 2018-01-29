@@ -10,6 +10,7 @@ import re
 import subprocess
 import sys
 from threading import Thread
+import time
 
 
 adb_path = find_executable("adb")
@@ -106,6 +107,9 @@ class Device:
             mkdir("output/"+self.__name_short)
         print(self.__get_name() + " execute: " + command)
         cmd = command.split(" ")
+        if cmd[0] == "sleep":
+            time.sleep(float(cmd[1]))
+            return
         if cmd[0] == "connect":
             self.__run_connect()
             return
