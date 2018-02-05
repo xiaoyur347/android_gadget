@@ -48,7 +48,7 @@ def disconnect(device):
 
 
 class Device:
-    def __init__(self, name, name_short, usb):
+    def __init__(self, name, name_short):
         self.__name = name
         self.__name_short = name_short
         self.__loop = None
@@ -56,7 +56,7 @@ class Device:
         self.__running = False
         self.__connected = True
         self.__auto_connect = False
-        if len(usb) != 0 or name.startswith("emulator"):
+        if name == name_short:
             self.__auto_connect = True
 
     def __del__(self):
@@ -124,6 +124,9 @@ class Device:
     def __run_connect(self):
         if self.__connected:
             return
+        if self.__auto_connect:
+            self.__connected = True
+            return
         if connect(self.__name):
             self.__connected = True
             return
@@ -168,8 +171,7 @@ class Devices:
     def append(self, device):
         if not self.has_device(device['serial']):
             device['object'] = Device(device['serial'],
-                                      device['serial_short'],
-                                      device['usb'])
+                                      device['serial_short'])
             self.__devices.append(device)
 
     def has_device(self, device_name):
