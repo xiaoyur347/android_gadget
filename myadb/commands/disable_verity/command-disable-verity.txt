@@ -1,0 +1,6 @@
+#run in myadb path
+root
+sleep 2
+connect
+disable-verity
+reboot
