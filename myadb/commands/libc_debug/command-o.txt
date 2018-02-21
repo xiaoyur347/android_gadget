@@ -1,0 +1,4 @@
+#run in myadb path
+shell setprop wrap.com.google.android.videos LIBC_DEBUG_MALLOC_OPTIONS=backtrace
+shell am force-stop com.google.android.videos
+shell am start com.google.android.videos
